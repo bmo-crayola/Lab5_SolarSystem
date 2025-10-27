@@ -11,19 +11,21 @@ app.get('/', async (req, res) => {
    let response = await fetch(url);
    let data = await response.json();
    console.log(data);
-   let randomImage = data.hits[0].webformatURL;
-   res.render('home.ejs');
+   let randomNum = Math.floor(Math.random() * data.hits.length);
+   let randomImage = data.hits[randomNum].webformatURL;
+   res.render('home.ejs', {randomImage});
 });
 
-//mercury route
+//planet route
 app.get('/planet', (req, res) => {
     let planet_name = req.query.planetName;
+    if (planet_name == "APOD") {
+      res.render('apod.ejs');
+    } else {
+      let planetInfo = solarSystem[`get${planet_name}`]();
+      res.render('planetInfo.ejs', {planetInfo, planet_name});
+    }
     
-    let planetInfo = solarSystem[`get${planet_name}`]();
-    
-    
-    console.log(planetInfo);
-    res.render('planetInfo.ejs', {planetInfo, planet_name});
 });
 
 app.listen(3000, () => {
