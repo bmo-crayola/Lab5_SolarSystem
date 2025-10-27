@@ -21,6 +21,9 @@ app.get('/planet', (req, res) => {
     let planet_name = req.query.planetName;
     if (planet_name == "APOD") {
       res.render('apod.ejs');
+    } else if (planet_name == "Comets" || planet_name == "Asteroids") {
+      let information = solarSystem[`get${planet_name}`]();
+      res.render('cometsAsteroids.ejs', {information, planet_name});
     } else {
       let planetInfo = solarSystem[`get${planet_name}`]();
       res.render('planetInfo.ejs', {planetInfo, planet_name});

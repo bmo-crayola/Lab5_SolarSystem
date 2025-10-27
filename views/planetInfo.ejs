@@ -13,18 +13,25 @@
 
     <%- include("partials/nav.ejs") %>
 
-    <h2> <%=planet_name%> </h2>
-    <%=planetInfo.description%>
+    <div class="main-content">
+        <div class="info-section">
+            <h2> <%=planet_name%> </h2>
+            <%=planetInfo.description%>
 
-    <br><br>
-    <p>Distance from Sun: <%=planetInfo.distanceFromSun%></p>
-    <p>Year Length: <%=planetInfo.yearLength%></p>
-    <p>Radius: <%=planetInfo.radius%></p>
-    <p>One Earth Day: <%=planetInfo.oneEarthDay%></p>
-    <p>Number of Moons: <%=planetInfo.moons%></p>
+            <br><br>
+            <p>Distance from Sun: <%=planetInfo.distanceFromSun%></p>
+            <p>Year Length: <%=planetInfo.yearLength%></p>
+            <p>Radius: <%=planetInfo.radius%></p>
+            <p>One Earth Day: <%=planetInfo.oneEarthDay%></p>
+            <p>Number of Moons: <%=planetInfo.moons%></p>
+        </div>
 
-    <br>
-    <img src="<%=planetInfo.image%>" width="300">
+        <br>
+
+        <div class="image-section">
+            <img src="<%=planetInfo.image%>" width="300">
+        </div>
+    </div>
 
     <%- include("partials/footer.ejs") %>
     
